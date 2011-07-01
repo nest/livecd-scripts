@@ -21,7 +21,7 @@ CLEANUP_SCRIPT="60_clean_chroot.sh"
 IMAGE_DATE=`date +%y.%m.%d`
 IMAGE_NAME="Ubuntu 11.04 i386 NEST"
 IMAGE_ORIG="ubuntu-11.04-desktop-i386.iso"
-IMAGE_FILE="ubuntu-11.04-desktop-i386-nest-$IMAGE_DATE.iso"
+IMAGE_FILE="ubuntu-11.04-desktop-i386-nest-$IMAGE_DATE-cns.iso"
 
 # Misc useful functions
 function pause() {

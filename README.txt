@@ -10,17 +10,46 @@ These scripts are derived from the official Ubuntu wiki page [1], in order to au
 
 All scripts are expected to be run as `root` from the folder where they are located, so be extra careful at what you are doing.
 
-   * `10_environment.sh`: contains miscellaneous settings (*do* adjust these to your platform before you start), is not supposed to be run directly, but rather sourced by other scripts.
+* `10_environment.sh`: contains miscellaneous settings (*do* adjust these to your platform before you start), is not supposed to be run directly, but rather sourced by other scripts.
 
-   * `20_bootstrap_workdir.sh`: creates the working directory for image remastering. Again, be extra careful to not to lose any information.
+* `20_bootstrap_workdir.sh`: creates the working directory for image remastering. Again, be extra careful to not to loose any information.
 
-   * `30_enter_chroot.sh`: takes care of setting up things when you enter and leave the chroot accordingly. Can be either passed a script to run inside the chroot as a parameter, e.g. `50_install_packages.sh` (this script also has to be customized for a particular platform) or run as is and in this case will only open the prompt for you to work it out.
+* `30_enter_chroot.sh`: takes care of setting up things when you enter and leave the chroot accordingly. Can be either passed a script to run inside the chroot as a parameter, e.g. `50_install_packages.sh` (this script also has to be customized for a particular platform) or run as is and in this case will only open the prompt for you to work it out.
 
-   * `70_master_image.sh`: this script creates an ISO out of the unpacked roots.
+* `70_master_image.sh`: this script creates an ISO out of the unpacked roots.
 
 Source archives and ISO files have to be downloaded separately.
 
 A typical workflow would involve running the `bootstrap_workdir` script, then `enter_chroot` with `install_packages` as a parameter, then `enter_chroot` alone and finally, when satisfied, `master_image`.
+
+CNS Tutorials
+-------------
+
+Update both:
+
+* extract-cd/cns-2011-tutorials
+* squashfs-root/usr/share/example-content/cns-2011-tutorials
+
+Modify (files with other filenames won't be copied to the desktop, but rather stay in $HOME):
+
+* /etc/skel/examples.desktop
+
+(see example.desktop)
+
+Desktop background
+------------------
+
+Options:
+
+    gconftool-2 --direct --config-source xml:readwrite:/etc/gconf/gconf.xml.defaults --type string --set /desktop/gnome/background/picture_options "scaled"
+
+Otherwise, the image has to be prepared in a way that it would be cropped nicely by the `zoom` algorithm on both anamorphic and non-anamorphic screens.
+
+Files:
+
+    /usr/share/backgrounds/warty-final-ubuntu.png
+
+(needs to be replaced with custom image)
 
 License
 -------

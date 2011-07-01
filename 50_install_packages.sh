@@ -12,6 +12,10 @@ set -u
 
 NEST_VERSION="nest-2.0.0-rc4"
 PYNN_VERSION="0.7.1"
+NEURON_VERSION=""
+#NEURON_VERSION="neuron-7.1-0ubuntu1_python27_natty11.04_i386.deb"
+NEURODEBIAN_FLAVOR="natty"
+INSTALL_TEXLIVE="yes"
 
 read -p "
 Please uncomment universe / multiverse if needed and add the partner repository:
@@ -58,6 +62,33 @@ apt-get install python-all-dev
 apt-get install python-numpy python-scipy python-matplotlib ipython
 apt-get install python-pip
 apt-get install subversion
+
+apt-get install diveintopython diveintopython-zh
+
+# Mayavi2 and the Python bindings
+#
+apt-get install mayavi2
+
+# Install NeuroDebian repositories
+#
+wget -O- http://neuro.debian.net/lists/$NEURODEBIAN_FLAVOR.us-nh | tee /etc/apt/sources.list.d/neurodebian.sources.list
+sudo apt-key adv --recv-keys --keyserver pgp.mit.edu 2649A5A9
+
+# mpi4py
+#
+apt-get install python-mpi4py
+
+# Set Sun Java as a default JRE / JDK
+#
+apt-get install sun-java6-jre sun-java6-jdk sun-java6-plugin sun-java6-fonts
+update-java-alternatives -s java-6-sun
+
+# Full TeX authoring environment
+#
+if [ -n "$INSTALL_TEXLIVE" ]; then
+    apt-get install texlive-full
+    apt-get install texworks texworks-scripting-lua texworks-scripting-python
+fi
 
 # Better looking gitk (chose wish8.5)
 #
@@ -107,11 +138,19 @@ svn co https://neuralensemble.org/svn/NeuroTools/trunk NeuroTools
 cd NeuroTools
 python setup.py install
 
+# Neuron
+# For packages, see: http://neuralensemble.org/people/eilifmuller/Software.html
+
+if [ -n "$NEURON_VERSION" ]; then
+    dpkg -i /$NEURON_VERSION
+    apt-get install -f
+fi
+
 read -p "Now please set desired environment variables, e.g.:
 
     # ZYV
-    PATH=\"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/opt/nest/bin\"
-    PYTHONPATH=\"/opt/nest/lib/python2.7/site-packages:\$PYTHONPATH\"
+    PATH=\"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/opt/nest/bin:/opt/nrn/i686/bin\"
+    PYTHONPATH=\"/opt/nest/lib/python2.7/site-packages:/usr/local/lib/python2.7/dist-packages\"
 
 vim will now start...
 "
