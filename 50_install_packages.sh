@@ -49,6 +49,7 @@ apt-get install ubuntu-restricted-extras ubuntu-restricted-addons
 apt-get install vim vim-gnome vim-scripts
 apt-get install vlc
 
+apt-get install build-essential
 apt-get install automake autoconf
 apt-get install diff patch
 apt-get install git git-svn git-gui git-man gitk
