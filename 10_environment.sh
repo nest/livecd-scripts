@@ -19,9 +19,9 @@ PREINSTALL_SCRIPT="40_prepare_chroot.sh"
 CLEANUP_SCRIPT="60_clean_chroot.sh"
 
 IMAGE_DATE=`date +%y.%m.%d`
-IMAGE_NAME="Ubuntu 11.04 i386 NEST"
-IMAGE_ORIG="ubuntu-11.04-desktop-i386.iso"
-IMAGE_FILE="ubuntu-11.04-desktop-i386-nest-$IMAGE_DATE-cns.iso"
+IMAGE_NAME="Ubuntu 12.04 i386 NEST"
+IMAGE_ORIG="ubuntu-12.04-desktop-i386.iso"
+IMAGE_FILE="ubuntu-12.04-desktop-i386-nest-$IMAGE_DATE.iso"
 
 # Misc useful functions
 function pause() {
@@ -37,5 +37,3 @@ Make sure that you have installed the needed tools:
     \$ sudo apt-get install squashfs-tools genisoimage
 
 "
-
-

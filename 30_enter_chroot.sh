@@ -55,7 +55,7 @@ else
     cp -f $SCRIPT_FULL $WORKING_ROOT/$LIVECD_ROOT
     chmod ugo+x $WORKING_ROOT/$LIVECD_ROOT/$SCRIPT_NAME
 
-    echo "Now please make sure that the relevant archives are already in /usr/src, i.e. NEST"
+    echo "Now please make sure that the relevant archives are already in /usr/src, i.e. NEST / NEURON"
 
     pause "Changing the root to $LIVECD_ROOT to run script $SCRIPT_NAME inside..."
 

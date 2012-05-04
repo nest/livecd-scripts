@@ -22,6 +22,8 @@ Source archives and ISO files have to be downloaded separately.
 
 A typical workflow would involve running the `bootstrap_workdir` script, then `enter_chroot` with `install_packages` as a parameter, then `enter_chroot` alone and finally, when satisfied, `master_image`.
 
+/!\ Remove the choice to install Ubuntu on bootup.
+
 CNS Tutorials
 -------------
 
