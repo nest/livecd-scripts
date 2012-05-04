@@ -1,0 +1,13 @@
+--- common.inc  2011-03-28 18:46:25 +0000
++++ common.inc  2012-05-04 15:32:18 +0000
+@@ -427,10 +427,6 @@
+     } { pop } ifelse
+   } if
+ 
+-  timeout.hidden {
+-    "maybe-ubiquity " bc.cmd dup length add sprintf
+-  } if
+-
+   bc.cmd dropspaces
+ 
+   debug 3 ge {

@@ -22,7 +22,12 @@ Source archives and ISO files have to be downloaded separately.
 
 A typical workflow would involve running the `bootstrap_workdir` script, then `enter_chroot` with `install_packages` as a parameter, then `enter_chroot` alone and finally, when satisfied, `master_image`.
 
-/!\ Remove the choice to install Ubuntu on bootup.
+/!\ To remove the choice to install Ubuntu on bootup:
+
+a) Proper way: rebuild gfxboot-theme-ubuntu with gfxboot-theme-ubuntu-no-ubiquity.patch, take bootlogo out and then put it into /isolinux.
+b) Hacky way: open /isolinux/bootlogo in a hex editor, change "maybe-ubiquity" to spaces (0x20) and then read a prayer.
+
+Of course, given a choice one would go the hacky way.
 
 CNS Tutorials
 -------------

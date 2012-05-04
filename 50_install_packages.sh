@@ -95,8 +95,9 @@ fi
 # Full TeX authoring environment
 #
 if test "x$INSTALL_TEXLIVE" = "xyes"; then
-    apt-get install texlive-full
+    apt-get install texlive
     apt-get install texworks texworks-scripting-lua texworks-scripting-python
+    apt-get install lyx
 fi
 
 # Mayavi2 and the Python bindings
@@ -112,6 +113,15 @@ apt-get install python-mpi4py
 # PyNN
 #
 apt-get install python-pynn
+
+# STEPS - http://steps.sourceforge.net/STEPS/Download.html
+#
+apt-get install python-opengl
+apt-get install python-wxgtk2.8
+easy_install steps
+
+# SWIG is only necessary to re-generate the wrappers, normally should work without it
+# apt-get install swig
 
 # Neuron
 # For packages, see: http://neuralensemble.org/people/eilifmuller/Software.html
