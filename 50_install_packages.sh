@@ -35,6 +35,11 @@ vi /etc/apt/sources.list
 wget -O- http://neuro.debian.net/lists/$NEURODEBIAN_FLAVOR.us-nh | tee /etc/apt/sources.list.d/neurodebian.sources.list
 apt-key adv --recv-keys --keyserver pgp.mit.edu 2649A5A9
 
+# Disable popularity contest for clones
+#
+read -p "Please answer NO to the next question, OK?"
+dpkg-reconfigure popularity-contest
+
 # Update the system
 #
 apt-get clean
@@ -113,6 +118,10 @@ apt-get install python-mpi4py
 # PyNN
 #
 apt-get install python-pynn
+
+# xppaut
+#
+apt-get install xppaut
 
 # STEPS - http://steps.sourceforge.net/STEPS/Download.html
 #

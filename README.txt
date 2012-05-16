@@ -29,6 +29,14 @@ b) Hacky way: open /isolinux/bootlogo in a hex editor, change "maybe-ubiquity" t
 
 Of course, given a choice one would go the hacky way.
 
+/!\ To create a virtual machine image:
+
+a) Mount a drive in a virtual machine
+b) Boot from the LiveCD
+c) Run usb-creator-gtk --allow-system-internal
+
+Now it should allow you to use the virtual disk as an USB stick. Finally, install VirtualBox guest additions FTW.
+
 CNS Tutorials
 -------------
 
