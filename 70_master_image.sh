@@ -33,7 +33,7 @@ sed -i '/casper/d' $IMAGE_ROOT/casper/filesystem.manifest-desktop
 #
 rm -f $IMAGE_ROOT/casper/filesystem.squashfs
 
-mksquashfs $LIVECD_ROOT $IMAGE_ROOT/casper/filesystem.squashfs
+mksquashfs $LIVECD_ROOT $IMAGE_ROOT/casper/filesystem.squashfs $IMAGE_CPUS
 chmod ugo-x $IMAGE_ROOT/casper/filesystem.squashfs
 
 printf $(du -sx --block-size=1 $LIVECD_ROOT | cut -f1) | tee $IMAGE_ROOT/casper/filesystem.size

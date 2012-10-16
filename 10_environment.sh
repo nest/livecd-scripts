@@ -19,9 +19,12 @@ PREINSTALL_SCRIPT="40_prepare_chroot.sh"
 CLEANUP_SCRIPT="60_clean_chroot.sh"
 
 IMAGE_DATE=`date +%y.%m.%d`
-IMAGE_NAME="Ubuntu 12.04 i386 NEST"
-IMAGE_ORIG="ubuntu-12.04-desktop-i386.iso"
-IMAGE_FILE="ubuntu-12.04-desktop-i386-nest-$IMAGE_DATE.iso"
+IMAGE_NAME="Ubuntu 12.04.1 i386 NEST"
+IMAGE_ORIG="ubuntu-12.04.1-desktop-i386.iso"
+IMAGE_FILE="ubuntu-12.04.1-desktop-i386-nest-$IMAGE_DATE.iso"
+
+IMAGE_CPUS=""
+IMAGE_CPUS="-processors 8"
 
 # Misc useful functions
 function pause() {

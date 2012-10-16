@@ -25,9 +25,9 @@ cd $WORKING_ROOT
 # Unpack the original live media
 #
 mount -o loop $IMAGE_ORIG $DISK_ROOT
-rsync --exclude=/casper/filesystem.squashfs -a $DISK_ROOT $IMAGE_ROOT/
+rsync --exclude=/casper/filesystem.squashfs -a $DISK_ROOT/ $IMAGE_ROOT
 
 rm -rf $LIVECD_ROOT
 
-unsquashfs -d $LIVECD_ROOT $DISK_ROOT/casper/filesystem.squashfs
+unsquashfs $IMAGE_CPUS -d $LIVECD_ROOT $DISK_ROOT/casper/filesystem.squashfs
 
