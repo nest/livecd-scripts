@@ -22,6 +22,19 @@ Source archives and ISO files have to be downloaded separately.
 
 A typical workflow would involve running the `bootstrap_workdir` script, then `enter_chroot` with `install_packages` as a parameter, then `enter_chroot` alone and finally, when satisfied, `master_image`.
 
+/!\ After initial bootstrapping of the chroot, do a dist-upgrade, but beware upgrading kernel packages! This stuff can cause substantial breakage! For instance, many kernel modules might not work anymore. If you want to upgrade to the next point release, just re-bootstrap the whole thing instead.
+
+To make sure apt-get doesn't upgrade the packages, put them on hold this way:
+
+    echo linux-firmware hold | dpkg --set-selections
+    echo linux-generic-pae hold | dpkg --set-selections
+    echo linux-image-generic-pae hold | dpkg --set-selections
+    echo linux-headers-generic-pae hold | dpkg --set-selections
+
+/!\ You might wish to remove BLCR, pulled in by OpenMPI, since it's know to break upgrades:
+
+    apt-get remove --purge blcr-dkms
+
 /!\ To remove the choice to install Ubuntu on bootup:
 
 a) Proper way: rebuild gfxboot-theme-ubuntu with gfxboot-theme-ubuntu-no-ubiquity.patch, take bootlogo out and then put it into /isolinux.

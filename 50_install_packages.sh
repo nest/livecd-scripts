@@ -11,13 +11,16 @@ set -e
 set -u
 
 NEST_VERSION="nest-2.1.9349-pre"
+NEURON_VERSION="neuron-7.1-0ubuntu1_python27_natty11.04_i386.deb"
+
+NEST_VERSION=""
 NEURON_VERSION=""
-#NEURON_VERSION="neuron-7.1-0ubuntu1_python27_natty11.04_i386.deb"
 
 NEURODEBIAN_FLAVOR="precise"
 
 INSTALL_TEXLIVE="no"
 INSTALL_JAVA="no"
+INSTALL_STEPS="no"
 
 read -p "
 Please uncomment universe / multiverse if needed and add the partner repository:
@@ -127,7 +130,10 @@ apt-get install xppaut
 #
 apt-get install python-opengl
 apt-get install python-wxgtk2.8
-easy_install steps
+
+if test "x$INSTALL_STEPS" = "xyes"; then
+    easy_install steps
+fi
 
 # SWIG is only necessary to re-generate the wrappers, normally should work without it
 # apt-get install swig
