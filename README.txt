@@ -50,6 +50,10 @@ c) Run usb-creator-gtk --allow-system-internal
 
 Now it should allow you to use the virtual disk as an USB stick. Finally, install VirtualBox guest additions FTW.
 
+/!\ After the VirtualBox guest additions are installed, make sure to add 'ubuntu' to the 'vboxsf' group, so that the users can access shared folders through /media/sf_xxx:
+
+    sudo usermod -a -G vboxsf ubuntu
+
 CNS Tutorials
 -------------
 
